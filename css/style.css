@@ -1,0 +1,141 @@
+/*
+#26F0EB azul turquesa
+#28FA86 verde turquesa
+#42E330 verdefosforito
+#C6FA28 verdelima
+#F0D930 amarillo
+
+
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+fieldset{
+    padding:0px;
+    margin: 0;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap:wrap;
+    flex-direction:column;
+    background-color: white;
+}
+.cajaPregunta{
+    display:flex;
+    justify-content:center;
+    align-content: center;
+    margin:auto;
+    margin:0;
+    height:20vh;
+    
+    width:100%;
+}
+.ficha{
+    display:flex;
+    justify-content:center;
+    align-content: center;
+    margin:auto;
+    margin:0;
+    height:20vh;
+    width:100%;
+}
+
+h3{
+    text-align:center;
+    margin:auto;
+    font-size: 1.5em;
+
+}
+
+input{
+    appearance: none;
+    visibility: hidden;
+    
+}
+
+label{
+    display:block;
+    width:100%;
+    margin:auto;
+    text-align:center;
+    font-size:1.5em;  
+}
+
+
+
+fieldset > div:nth-child(1){
+    background-color:#F0D930;
+}
+fieldset > div:nth-child(2){
+    background-color:#C6FA28;
+}
+fieldset >  div:nth-child(3){
+    background-color:#42E330
+}
+fieldset > div > div:nth-child(4){
+    background-color:#28FA86;
+}
+fieldset > div:nth-child(5){
+    background-color:#26F0EB ;
+}
+
+
+
+
+.escondido{
+/*#pregunta2, #pregunta/*3, #pregunta4, #pregunta5, #pregunta6, #pregunta7, #pregunta8{*/
+    display: none;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    main{
+        padding: 20%;
+    }
+    fieldset{
+        height: 70vh;
+        display:block;
+        border:2px solid red;
+    }
+    .cajaPregunta{
+        margin: 0px 0px 30px 0px;
+    }
+    .ficha{
+        margin:30px 0;
+        border:2px solid blue;
+    }
+    .column{
+        width: 50%;
+
+        display: flex;
+        flex-direction: column;
+        border:2px solid black;
+    }
+    .row{
+        justify-content: space-around;
+        display: flex;
+        flex-direction: row;
+        border:2px solid gray;
+    }
+}
+@media only screen and (min-width: 1366px) {
+    main{
+        padding: 20%;
+    }
+    .column{
+        display: flex;
+        flex-direction: column;
+    }
+    .row{
+        display: flex;
+        flex-direction: row;
+    }
+}
