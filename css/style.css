@@ -1,9 +1,9 @@
 /*
-#26F0EB azul turquesa
-#28FA86 verde turquesa
-#42E330 verdefosforito
-#C6FA28 verdelima
-#F0D930 amarillo
+#7FB7BE
+#D3F3EE
+#DACC3E
+#BC2C1A
+#7D1538
 
 
 */
@@ -34,8 +34,11 @@ fieldset{
     margin:auto;
     margin:0;
     height:20vh;
-    
     width:100%;
+    
+}
+label, .ficha{
+    cursor: pointer;
 }
 .ficha{
     display:flex;
@@ -45,7 +48,12 @@ fieldset{
     margin:0;
     height:20vh;
     width:100%;
+    -webkit-box-shadow: -10px 0px 13px -7px #5a5a5a, 10px 0px 13px -7px #5a5a5a, 7px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: -10px 0px 13px -7px #5a5a5a, 10px 0px 13px -7px #5a5a5a, 7px 5px 15px 5px rgba(0,0,0,0);
+    
 }
+
+
 
 h3{
     text-align:center;
@@ -70,21 +78,20 @@ label{
 
 
 
-fieldset > div:nth-child(1){
-    background-color:#F0D930;
+
+.contenedor div:nth-child(1){
+    background-color:#D3F3EE
 }
-fieldset > div:nth-child(2){
-    background-color:#C6FA28;
+.contenedor div:nth-child(2){
+    background-color:#DACC3E;
 }
-fieldset >  div:nth-child(3){
-    background-color:#42E330
+.contenedor div:nth-child(3){
+    background-color:#BC2C1A
 }
-fieldset > div > div:nth-child(4){
-    background-color:#28FA86;
+.contenedor div:nth-child(4){
+    background-color:#7FB7BE
 }
-fieldset > div:nth-child(5){
-    background-color:#26F0EB ;
-}
+
 
 
 
@@ -103,14 +110,14 @@ fieldset > div:nth-child(5){
     fieldset{
         height: 70vh;
         display:block;
-        border:2px solid red;
+        /*border:2px solid red;*/
     }
     .cajaPregunta{
-        margin: 0px 0px 30px 0px;
+        margin: 0;
     }
     .ficha{
         margin:30px 0;
-        border:2px solid blue;
+        width:48%;
     }
     .column{
         width: 50%;
@@ -119,11 +126,11 @@ fieldset > div:nth-child(5){
         flex-direction: column;
         border:2px solid black;
     }
-    .row{
-        justify-content: space-around;
+    .contenedor{
+        justify-content: space-between;
         display: flex;
-        flex-direction: row;
-        border:2px solid gray;
+        flex-wrap: wrap;
+        /*border:2px solid gray;*/
     }
 }
 @media only screen and (min-width: 1366px) {
@@ -135,8 +142,12 @@ fieldset > div:nth-child(5){
         flex-direction: column;
         margin: 0 3%;
     }
-    .row{
+    .contenedor{
+        justify-content: space-between;
         display: flex;
-        flex-direction: row;
+        flex-wrap: wrap;
+        
     }
+
+    
 }
