@@ -69,14 +69,15 @@ input{
 }
 
 label{
-    display:block;
+    display:flex;
+    align-items: center;
+    justify-content: center;
     width:100%;
     margin:auto;
     text-align:center;
-    font-size:1.5em;  
+    font-size:1.5em; 
+    height:100%;
 }
-
-
 
 
 .contenedor div:nth-child(1){
