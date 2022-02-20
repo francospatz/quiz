@@ -14,41 +14,51 @@ const preguntas = [
     },
     {
         pregunta: "Pregunta2",
-        a: "a",
-        b: "b",
-        c: "c",
-        d: "d",
-        correcta: "a"
+        a: "d",
+        b: "e",
+        c: "f",
+        d: "g",
+        correcta: "b"
     },
     {
         pregunta: "Pregunta3",
-        a: "a",
-        b: "b",
-        c: "c",
-        d: "d",
-        correcta: "a"
+        a: "g",
+        b: "h",
+        c: "i",
+        d: "j",
+        correcta: "c"
     },
     {
         pregunta: "Pregunta4",
-        a: "a",
-        b: "b",
-        c: "c",
-        d: "d",
+        a: "k",
+        b: "l",
+        c: "m",
+        d: "n",
         correcta: "a"
     },
     {
         pregunta: "Pregunta5",
-        a: "a",
-        b: "b",
-        c: "c",
-        d: "d",
-        correcta: "a"
+        a: "o",
+        b: "p",
+        c: "q",
+        d: "r",
+        correcta: "d"
     }
 ]
 
+//establece contador de preguntas
+let i = 0;
+
+const respuestas = [];// almacena el valor de la respuesta (a,b,c o d)
+
+const respuestaA = () => respuestas.push("a");
+const respuestaB = () => respuestas.push("b");
+const respuestaC = () => respuestas.push("c");
+const respuestaD = () => respuestas.push("d");
+
 //Home > p1 >p2 >p3> p4> p5 > hoja respuestas con submit
 
-//FUNCION
+
 
 const pregunta = document.querySelector("h3");
 const opcion1 = document.querySelectorAll("label")[0];
@@ -56,53 +66,69 @@ const opcion2 = document.querySelectorAll("label")[1];
 const opcion3 = document.querySelectorAll("label")[2];
 const opcion4 = document.querySelectorAll("label")[3];
 
-let i = 0;
-
-const fichas = document.getElementsByClassName("ficha");
-
-window.onload = cargarPrimeraVez();
 
 function cargarPregunta() {
-    if(i>4){
+    if (i >= preguntas.length) {//si el contador es mayor que el numero de preguntas, llevar a pantalla final de submit
         return
     }
     pregunta.innerHTML = preguntas[i].pregunta;
     opcion1.innerHTML = preguntas[i].a;
     opcion2.innerHTML = preguntas[i].b;
-    opcion3.innerHTML = preguntas[i].b;
+    opcion3.innerHTML = preguntas[i].c;
     opcion4.innerHTML = preguntas[i].d;
-    
+   
     i++;
 }
 
-//arreglar event listener de fichas a label !!!!
+pregunta.innerHTML = preguntas[i].pregunta;
+opcion1.innerHTML = preguntas[i].a;
+opcion2.innerHTML = preguntas[i].b;
+opcion3.innerHTML = preguntas[i].c;
+opcion4.innerHTML = preguntas[i].d;
 
-function cargarPrimeraVez() {
-    fichas[0].addEventListener("click", cargarPregunta, true);
-    fichas[1].addEventListener("click", cargarPregunta, true);
-    fichas[2].addEventListener("click", cargarPregunta, true);
-    fichas[3].addEventListener("click", cargarPregunta, true);
-    i=0;
-    pregunta.innerHTML = preguntas[i].pregunta;
-    opcion1.innerHTML = preguntas[i].a;
-    opcion2.innerHTML = preguntas[i].b;
-    opcion3.innerHTML = preguntas[i].b;
-    opcion4.innerHTML = preguntas[i].d;
+//eventos para cargar siguiente pregunta
+opcion1.addEventListener("click", cargarPregunta);
+opcion2.addEventListener("click", cargarPregunta);
+opcion3.addEventListener("click", cargarPregunta);
+opcion4.addEventListener("click", cargarPregunta);
+
+//eventos para almacenar respuesta 
+opcion1.addEventListener("click", respuestaA);
+opcion2.addEventListener("click", respuestaB);
+opcion3.addEventListener("click", respuestaC);
+opcion4.addEventListener("click", respuestaD);
+
+i++;
+
+
+const correctas = [];
+
+//la corrección aún no funciona
+function correccion(arrRespuestas){//toma el array respuestas
+    for (i=0;i<respuestas.lenght;i++){
+        if(respuesta[i] === preguntas[i].correcta){//compara cada posicion con la propiedad correcta del objeto preguntas
+            correctas.push(true);
+        }else{
+            correctas.push(false);
+        }
+    }
+console.log(correctas);
 }
 
 
-
-
-
-
 /*
-- pintar la nueva pregunta y las cuatro respuestas
 - que guarde la respuesta
+
+
+
+
+if(/*respuesta clicada == pregunta[i].correcta){
+    respuestas.push(true);
+}
+
+function guardaRespuesta
+
 */
-
-
-
-
 
 
 
