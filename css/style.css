@@ -15,8 +15,14 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
-
+.escondido{
+    display: none;
+}
+main{
+    background-color: rgb(255, 255, 246);
+}
 fieldset{
+    background-color: rgb(255, 255, 246);
     padding:0px;
     margin: 0;
     height:100vh;
@@ -25,7 +31,7 @@ fieldset{
     align-content: center;
     flex-wrap:wrap;
     flex-direction:column;
-    background-color: white;
+    
 }
 .cajaPregunta{
     display:flex;
@@ -53,22 +59,66 @@ label, .ficha{
     
 }
 
-
-
 h3{
+    color: rgb(61, 22, 61);
     text-align:center;
     margin:auto;
     font-size: 1.5em;
 
 }
-
-input{
+input[type="radio"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    appearance: none;
+    /* For iOS < 15 */
+    background-color: var(--form-background);
+    /* Not removed via appearance */
+    margin: 0;
+  
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid rgba(0, 128, 0, 0);
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+  
+    display: grid;
+    place-content: center;
+  }
+  :root {
+    --form-control-color: green
+  }
+  input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em green;
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+  }
+  
+  input[type="radio"]:checked::before {
+    transform: scale(1);
+  }
+  
+  input[type="radio"]:focus {
+    border: 0.15em solid rgb(0, 128, 0);
+    outline: max(2px, 0.15em) solid green;
+    outline-offset: max(2px, 0.15em);
+  }
+/* input{
     appearance: none;
     visibility: hidden;
     
 }
-
+ */
 label{
+    color: rgb(90, 0, 90);
     display:flex;
     align-items: center;
     justify-content: center;
@@ -78,39 +128,37 @@ label{
     font-size:1.5em; 
     height:100%;
     
+    
 }
 
 
 .contenedor div:nth-child(1){
-    background-color:#D3F3EE
+    background-color:#A6CFD5
 }
 .contenedor div:nth-child(2){
-    background-color:#DACC3E;
+    background-color:#E56399;
 }
 .contenedor div:nth-child(3){
-    background-color:#BC2C1A
+    background-color:#7F96FF
 }
 .contenedor div:nth-child(4){
-    background-color:#7FB7BE
+    background-color:#DBFCFF
 }
 
 
-
-
-/*
-.escondido{
-/*#pregunta2, #pregunta/*3, #pregunta4, #pregunta5, #pregunta6, #pregunta7, #pregunta8{
-    display: none;
-}*/
-
-
+#enviar{
+    text-align: center;
+    border: 1px solid black;
+    background-color: rgba(0, 128, 0, 0);
+    padding:5px;
+}
 
 @media only screen and (min-width: 768px) {
     main{
         padding: 7%;
     }
     fieldset{
-        height: 70vh;
+        height: 100vh;
         display:block;
         /*border:2px solid red;*/
     }
@@ -135,6 +183,8 @@ label{
         /*border:2px solid gray;*/
     }
 }
+
+
 @media only screen and (min-width: 1366px) {
     main{
         padding: 7%;

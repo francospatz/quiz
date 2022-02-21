@@ -1,184 +1,155 @@
-//pasar de la portada a la primera pregunta
-// Home > p1   
-
-//ARRAY con OBJETOs Pregunta
-
-const preguntas = [
-    {
-        pregunta: "Pregunta1",
-        a: "a",
-        b: "b",
-        c: "c",
-        d: "d",
-        correcta: "a"
-    },
-    {
-        pregunta: "Pregunta2",
-        a: "d",
-        b: "e",
-        c: "f",
-        d: "g",
-        correcta: "b"
-    },
-    {
-        pregunta: "Pregunta3",
-        a: "g",
-        b: "h",
-        c: "i",
-        d: "j",
-        correcta: "c"
-    },
-    {
-        pregunta: "Pregunta4",
-        a: "k",
-        b: "l",
-        c: "m",
-        d: "n",
-        correcta: "a"
-    },
-    {
-        pregunta: "Pregunta5",
-        a: "o",
-        b: "p",
-        c: "q",
-        d: "r",
-        correcta: "d"
-    }
-]
-
-//establece contador de preguntas
-let i = 0;
-
-const respuestas = [];// almacena el valor de la respuesta (a,b,c o d)
-
-const respuestaA = () => respuestas.push("a");
-const respuestaB = () => respuestas.push("b");
-const respuestaC = () => respuestas.push("c");
-const respuestaD = () => respuestas.push("d");
-
-//Home > p1 >p2 >p3> p4> p5 > hoja respuestas con submit
+//1 validaremos formulario con js al enviar
+document.querySelector("form").addEventListener('submit', function (event) {
+    event.preventDefault();//detiene envio formulario
 
 
+    //Inserta en un array las respuesta seleccionada
+    const respuestasUsuario = [];
 
-const pregunta = document.querySelector("h3");
-const opcion1 = document.querySelectorAll("label")[0];
-const opcion2 = document.querySelectorAll("label")[1];
-const opcion3 = document.querySelectorAll("label")[2];
-const opcion4 = document.querySelectorAll("label")[3];
+    const numPreguntas = document.getElementsByTagName("fieldset").length;
 
-
-function cargarPregunta() {
-    if (i >= preguntas.length) {//si el contador es mayor que el numero de preguntas, llevar a pantalla final de submit
-        return
-    }
-    pregunta.innerHTML = preguntas[i].pregunta;
-    opcion1.innerHTML = preguntas[i].a;
-    opcion2.innerHTML = preguntas[i].b;
-    opcion3.innerHTML = preguntas[i].c;
-    opcion4.innerHTML = preguntas[i].d;
-   
-    i++;
-}
-
-pregunta.innerHTML = preguntas[i].pregunta;
-opcion1.innerHTML = preguntas[i].a;
-opcion2.innerHTML = preguntas[i].b;
-opcion3.innerHTML = preguntas[i].c;
-opcion4.innerHTML = preguntas[i].d;
-
-//eventos para cargar siguiente pregunta
-opcion1.addEventListener("click", cargarPregunta);
-opcion2.addEventListener("click", cargarPregunta);
-opcion3.addEventListener("click", cargarPregunta);
-opcion4.addEventListener("click", cargarPregunta);
-
-//eventos para almacenar respuesta 
-opcion1.addEventListener("click", respuestaA);
-opcion2.addEventListener("click", respuestaB);
-opcion3.addEventListener("click", respuestaC);
-opcion4.addEventListener("click", respuestaD);
-
-i++;
-
-
-const correctas = [];
-
-//la corrección aún no funciona
-function correccion(arrRespuestas){//toma el array respuestas
-    for (i=0;i<respuestas.lenght;i++){
-        if(respuesta[i] === preguntas[i].correcta){//compara cada posicion con la propiedad correcta del objeto preguntas
-            correctas.push(true);
-        }else{
-            correctas.push(false);
+    for (let i = 0; i < numPreguntas * 4; i += 4) {
+        if (document.getElementsByTagName("input")[i].checked) {
+            respuestasUsuario.push("a");
+        } else if (document.getElementsByTagName("input")[i + 1].checked) {
+            respuestasUsuario.push("b");
+        } else if (document.getElementsByTagName("input")[i + 2].checked) {
+            respuestasUsuario.push("c");
+        } else if (document.getElementsByTagName("input")[i + 3].checked) {
+            respuestasUsuario.push("d");
         }
     }
-console.log(correctas);
+
+    console.log(respuestasUsuario);
+
+
+    //Imprime por consola respuesta correcta
+    const hojaRespuestas = ["a", "a", "b", "c", "a", "d", "c", "a", "c", "d"];
+
+    for (j = 0; j < respuestasUsuario.length; j++) {
+        if (hojaRespuestas[j] == respuestasUsuario[j]) {
+            console.log("respuesta " + (j + 1) + " correcta.");
+
+        } else {
+            console.log("respuesta " + (j + 1) + " incorrecta.");
+        }
+    }
+
+    //Pone en color verde la respuesta si se ha acertado o en rojo si se ha fallado
+    for (let k = 0; k < numPreguntas * 4; k += 4) {
+        if (document.getElementsByTagName("input")[k].checked) {
+            if (document.getElementsByTagName("input")[k].value == hojaRespuestas[k]) {
+                document.querySelectorAll(".ficha")[k].style.backgroundColor = "green";
+            } else {
+                document.querySelectorAll(".ficha")[k].style.backgroundColor = "red";
+            }
+        }
+        if (document.getElementsByTagName("input")[k + 1].checked) {
+            if (document.getElementsByTagName("input")[k + 1].value == hojaRespuestas[k]) {
+                document.querySelectorAll(".ficha")[k + 1].style.backgroundColor = "green";
+            } else {
+                document.querySelectorAll(".ficha")[k + 1].style.backgroundColor = "red";
+            }
+        }
+        if (document.getElementsByTagName("input")[k + 2].checked) {
+            if (document.getElementsByTagName("input")[k + 2].value == hojaRespuestas[k]) {
+                document.querySelectorAll(".ficha")[k + 2].style.backgroundColor = "green";
+            } else {
+                document.querySelectorAll(".ficha")[k + 2].style.backgroundColor = "red";
+            }
+
+        }
+        if (document.getElementsByTagName("input")[k + 3].checked) {
+            if (document.getElementsByTagName("input")[k + 3].value == hojaRespuestas[k]) {
+                document.querySelectorAll(".ficha")[k + 3].style.backgroundColor = "green";
+            } else {
+                document.querySelectorAll(".ficha")[k + 3].style.backgroundColor = "red";
+            }
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// seleccionar respuesta (border) addEventListener click añadir atributo que en css tiene otro color (?)
+
+
+
+
+// guardar valores de preguntas seleccioandas en un array
+
+/* document.getElementById("pregunta");
+let respuestasUsuario = [];
+
+function checkButton() {
+
+    const numPreguntas = document.getElementsByTagName("fieldset").length;
+
+    for (i = 0; i < numPreguntas; i+4) {
+
+        if (document.getElementsByTagName("input")[i].checked) {
+            respuestasUsuario.push("a");
+            console.log("a");
+        } else if (document.getElementsByTagName("input")[i + 1].checked) {
+            respuestasUsuario.push("b");
+            console.log("b");
+        } else if (document.getElementsByTagName("input")[i + 2].checked) {
+            respuestasUsuario.push("c");
+            console.log("c");
+        } else if (document.getElementsByTagName("input")[i + 3].checked) {
+            respuestasUsuario.push("d");
+            console.log("d");
+        }
+    }
+    let enviado = document.getElementById("enviar").value;
+    console.log(enviado);
+
 }
+ */
+
+// var score = document.querySelector('input[name="scores"]:checked').value;
+//alert(score + ' was selected!');
+
+//onSubmit comprobar que se han seleccionado respuestas para todas las preguntas y, si es así, comparar las respuestas seleccionadas con las respuestas que son correctas
+/* 
+const form = document.querySelector("form");
+const bottonSubmit = document.querySelector("button");
+
+bottonSubmit.addEventListener("click", function (event) {
+    event.preventDefault()
 
 
-/*
-- que guarde la respuesta
-
-
-
-
-if(/*respuesta clicada == pregunta[i].correcta){
-    respuestas.push(true);
-}
-
-function guardaRespuesta
-
-*/
-
-
-
-//Tabla de respuestas
-
-
-
-//Al pulsar un boton pase a la siguiente pregunta (Sin terminar)
-
-
-
-
-//que se guarde la respuesta (crear objeto respuesta)
-
-
-
-
-//escribir preguntas (HTML)
-
-
-
-//crear objeto respuestas
-
-
-//crear botón de envío <button class="escondido" type="submit">Comprobar datos</button>
-
-
-
-//Evitar que la pagina refresque al pulsar el botón de envío
-
-
-
-
-//Validacion de las respuestas (que todas estén respondidas)
-
-
-
-
-//ultima pantalla con boton y respuestas seleccionadas
-
-
-
-
-//al enviar que las respuestas se pongan del color según sean correctas (verde) o incorrectas (rojo). 
-
-
-
-//boton para comenzar de nuevo después de enviar
-
-
-
-
-//pagina bienvenida
+});
+ */
