@@ -2,7 +2,6 @@ document.querySelector("form").addEventListener('submit', function (event) {
     event.preventDefault();
 
     const numPreguntas = document.getElementsByTagName("fieldset").length;
-
     let inputs = document.querySelectorAll("input[type='radio']");
     let fichas = document.querySelectorAll(".ficha");
     let contador = 0;
