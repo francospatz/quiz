@@ -1,41 +1,38 @@
-//1 validaremos formulario con js al enviar
 document.querySelector("form").addEventListener('submit', function (event) {
-
-    event.preventDefault();//detiene envio formulario
+    event.preventDefault();
 
     const numPreguntas = document.getElementsByTagName("fieldset").length;
 
-    for (let i = 0; i < numPreguntas * 4; i++) {
-        if (document.getElementsByTagName("input")[i].checked === true || document.getElementsByTagName("input")[i].value === "correcto") {
-            document.querySelectorAll(".ficha")[i].style.backgroundColor = "green";
-        } else if (document.getElementsByTagName("input")[i].checked === true || document.getElementsByTagName("input")[i].value === "incorrecto") {
-            document.querySelectorAll(".ficha")[i].style.backgroundColor = "red";
+    let inputs = document.querySelectorAll("input[type='radio']");
+    let fichas = document.querySelectorAll(".ficha");
+    let contador = 0;
+
+    for (let k = 0; k < inputs.length; k++){
+        console.log(inputs[k]);
+        if(inputs[k].checked){
+            contador += 1;
         }
     }
 
-//document.getElementsByTagName("input")[1].checked
-
-    const filtered = document.getElementsByTagName("input[type='radio']").filter(element => element.checked);
-
-
-    if (filtered == numPreguntas) {
-    } else { console.log("Deben responderse todas las preguntas") }
-
-    /* for (let j = 0; j < inputs.length - 1; i++) {
-        let k=0;
-        if(inputs[i].checked == true){
-            k++;
+    if (contador < numPreguntas){
+        alert("¡Debes responder a todas las preguntas!");
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    } else {
+        for (j = 0; j < numPreguntas * 4; j++){
+            if (inputs[j].checked && inputs[j].value == "correcto"){
+                fichas[j].style.backgroundColor = "#058E3F";
+            } else if (inputs[j].checked && inputs[j].value == "incorrecto"){
+                fichas[j].style.backgroundColor = "#A50104";
+            }
         }
-    }
-    if(k<fieldset.lenght){
-        
-    } */
-
-
-
-    window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-    });
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }   
 });

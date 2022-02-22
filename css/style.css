@@ -15,6 +15,45 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+
+.welcomeMain{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.welcome{
+    color: rgb(61, 22, 61);
+    text-align:center;
+  
+    font-size: 3em;
+}
+.welcome2{
+    margin: 2em 0;
+    color: rgb(61, 22, 61);
+    text-align:center;
+    
+    font-size: 1.5em;
+}
+.boton:hover{
+    color: #7F96FF;
+    border: 1em solid #52142e;
+    border-radius: 20px;
+    background-color:#52142e;
+}
+.boton{
+    color: rgb(61, 22, 61);
+    -webkit-transition: all 0.5s 0s ease;
+    transition: all 0.5s 0s ease;
+    cursor: pointer;
+    font-size: 2em;
+    border: 1em solid #E56399;
+    border-radius: 25px;
+    background-color:#E56399;
+}
+
 .escondido{
     display: none;
 }
@@ -44,9 +83,13 @@ fieldset{
     
 }
 label, .ficha{
+    font-weight: bolder;
     cursor: pointer;
+    
 }
 .ficha{
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
     display:flex;
     justify-content:center;
     align-content: center;
@@ -88,7 +131,7 @@ input[type="radio"] {
     place-content: center;
   }
   :root {
-    --form-control-color: green
+    --form-control-color: #52142e
   }
   input[type="radio"]::before {
     content: "";
@@ -97,7 +140,7 @@ input[type="radio"] {
     border-radius: 50%;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em green;
+    box-shadow: inset 1em 1em #52142e;
     /* Windows High Contrast Mode */
     background-color: CanvasText;
   }
@@ -107,8 +150,8 @@ input[type="radio"] {
   }
   
   input[type="radio"]:focus {
-    border: 0.15em solid rgb(0, 128, 0);
-    outline: max(2px, 0.15em) solid green;
+    border: 0.15em solid #52142e;
+    outline: max(2px, 0.15em) solid #52142e;
     outline-offset: max(2px, 0.15em);
   }
 /* input{
@@ -182,6 +225,10 @@ label{
         flex-wrap: wrap;
         /*border:2px solid gray;*/
     }
+    .ficha:hover{
+        border-radius: 20px;
+    }
+    
 }
 
 
@@ -200,6 +247,7 @@ label{
         flex-wrap: wrap;
         
     }
-
-    
+    .ficha:hover{
+        border-radius: 20px;
+    }
 }
