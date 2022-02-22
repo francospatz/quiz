@@ -21,49 +21,56 @@ document.querySelector("form").addEventListener('submit', function (event) {
     //Imprime por consola respuesta correcta
     const hojaRespuestas = ["a", "a", "b", "c", "a", "d", "c", "a", "c", "d"];
 
-    for (j = 0; j < respuestasUsuario.length; j++) {
+    for (j = 0; j < 10; j++) {
         if (hojaRespuestas[j] == respuestasUsuario[j]) {
             console.log("respuesta " + (j + 1) + " correcta.");
         } else {
             console.log("respuesta " + (j + 1) + " incorrecta.");
         }
     }
+    //let k = 0; k < numPreguntas * 4; k += 4
     //Pone en color verde la respuesta si se ha acertado o en rojo si se ha fallado
     //démosle un repasito al bucle que itera "x" ;)
-    for (let k = 0; k < numPreguntas * 4; k += 4) {
-        for (let x = 0; x < hojaRespuestas.length; x++){
+
+    //******!!!! HAY QUE REHACER ESTA HARDCODEADA!!!!******
+    let iterator = 1;
+    for (let x = 0; x < 40; x++) {
+        for (let k = iterator; k <= numPreguntas.length * 4; k += 4) {
             console.log(hojaRespuestas);
             console.log(respuestasUsuario + "oficiales");
-            if (document.getElementsByTagName("input")[k].checked) {
-                if (document.getElementsByTagName("input")[k].value == hojaRespuestas[x]) {
+            if (document.getElementsByTagName("input")[k-1].checked) {
+                if (document.getElementsByTagName("input")[k-1].value === hojaRespuestas[x]) {
+                    document.querySelectorAll(".ficha")[k-1].style.backgroundColor = "green";
+                } else {
+                    document.querySelectorAll(".ficha")[k-1].style.backgroundColor = "red";
+                }
+            }
+            else if (document.getElementsByTagName("input")[k].checked) {
+                if (document.getElementsByTagName("input")[k].value === hojaRespuestas[x]) {
                     document.querySelectorAll(".ficha")[k].style.backgroundColor = "green";
                 } else {
                     document.querySelectorAll(".ficha")[k].style.backgroundColor = "red";
                 }
             }
             else if (document.getElementsByTagName("input")[k + 1].checked) {
-                if (document.getElementsByTagName("input")[k + 1].value == hojaRespuestas[x]) {
+                if (document.getElementsByTagName("input")[k + 1].value === hojaRespuestas[x]) {
                     document.querySelectorAll(".ficha")[k + 1].style.backgroundColor = "green";
                 } else {
                     document.querySelectorAll(".ficha")[k + 1].style.backgroundColor = "red";
                 }
             }
             else if (document.getElementsByTagName("input")[k + 2].checked) {
-                if (document.getElementsByTagName("input")[k + 2].value == hojaRespuestas[x]) {
+                if (document.getElementsByTagName("input")[k + 2].value === hojaRespuestas[x]) {
                     document.querySelectorAll(".ficha")[k + 2].style.backgroundColor = "green";
                 } else {
                     document.querySelectorAll(".ficha")[k + 2].style.backgroundColor = "red";
                 }
             }
-            else if (document.getElementsByTagName("input")[k + 3].checked) {
-                if (document.getElementsByTagName("input")[k + 3].value == hojaRespuestas[x]) {
-                    document.querySelectorAll(".ficha")[k + 3].style.backgroundColor = "green";
-                } else {
-                    document.querySelectorAll(".ficha")[k + 3].style.backgroundColor = "red";
-                }
+            if (k%4==0){
+                continue
             }
         }
-        
+        iterator+=4;
     }
     window.scroll({
         top: 0, 
